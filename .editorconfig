@@ -28,6 +28,6 @@ indent_style = space
 indent_size = 2
 
 # Matches the exact files either package.json or .travis.yml
-[{composer.json, .travis.yml}]
+[{composer.json, package.json, .travis.yml}]
 indent_style = space
 indent_size = 2
