@@ -43,7 +43,6 @@ export class CoffeesController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    console.log(1);
     // return `This action removes #${id} coffee`;
     return this.coffeeService.remove(id);
   }
