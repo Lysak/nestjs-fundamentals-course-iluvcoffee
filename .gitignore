@@ -1,5 +1,7 @@
 # compiled output
 /dist
+
+# dependencies
 /node_modules
 
 # Logs
@@ -10,12 +12,31 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# OS
+# bundle
+packages/**/*.d.ts
+packages/**/*.js
+
+# OS # misc
 .DS_Store
+lerna-debug.log
+npm-debug.log
+yarn-error.log
+/**/npm-debug.log
+/packages/**/.npmignore
+/packages/**/LICENSE
+
+# example
+/quick-start
+/example_dist
+/example
 
 # Tests
+/test
+/benchmarks/memory
 /coverage
 /.nyc_output
+/packages/graphql
+build/config\.gypi
 
 # IDEs and editors
 /.idea
@@ -25,6 +46,9 @@ lerna-debug.log*
 *.launch
 .settings/
 *.sublime-workspace
+/.awcache
+/.vscode
+*.code-workspace
 
 # IDE - VSCode
 .vscode/*
