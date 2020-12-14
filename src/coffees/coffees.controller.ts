@@ -9,6 +9,8 @@ import {
   Delete,
 } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
+import { CreateCoffeeDto } from './dto/create-coffee.dto';
+import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -29,16 +31,16 @@ export class CoffeesController {
   }
 
   @Post(':id')
-  create(@Body() body) {
+  create(@Body() createCoffeeDto: CreateCoffeeDto) {
     // return body;
     // return `This action creates a coffee`;
-    return this.coffeeService.findOne(body);
+    return this.coffeeService.create(createCoffeeDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body) {
+  update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {
     // return `This action updates #${id} coffee`;
-    return this.coffeeService.update(id, body);
+    return this.coffeeService.update(id, updateCoffeeDto);
   }
 
   @Delete(':id')
