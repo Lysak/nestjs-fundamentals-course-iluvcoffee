@@ -1,3 +1,6 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
 # compiled output
 /dist
 
@@ -24,6 +27,7 @@ yarn-error.log
 /**/npm-debug.log
 /packages/**/.npmignore
 /packages/**/LICENSE
+.env
 
 # example
 /quick-start
@@ -56,3 +60,27 @@ build/config\.gypi
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+*~
+*.sw[mnpcod]
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+.vscode/
+
+.idea/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+www/
+dist/
+node_modules/
+tmp/
+temp/
+$RECYCLE.BIN/
+
+Thumbs.db
+UserInterfaceState.xcuserstate
