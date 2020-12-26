@@ -13,16 +13,11 @@ import * as Joi from '@hapi/joi';
   imports: [
     ConfigModule.forRoot({
       validationSchema: Joi.object({
-        DATABASE_HOST: Joi.required().when('DATABASE_URL', {
-          is: null,
-          then: Joi.required(),
+        DATABASE_HOST: Joi.when('DATABASE_URL', {
+          is: undefined,
+          otherwise: Joi.required(),
         }),
-        DATABASE_PORT: Joi.number()
-          .default(5432)
-          .when('DATABASE_URL', {
-            is: null,
-            then: Joi.number().default(5432),
-          }),
+        DATABASE_PORT: Joi.number().default(5432),
       }),
     }),
     CoffeesModule,
