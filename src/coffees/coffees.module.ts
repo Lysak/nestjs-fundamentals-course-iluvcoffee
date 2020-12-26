@@ -51,5 +51,6 @@ export class CoffeeBrandsFactory {
           : ProductionConfigService,
     },
   ],
+  exports: [CoffeesService],
 })
 export class CoffeesModule {}
