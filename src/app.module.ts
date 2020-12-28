@@ -12,15 +12,18 @@ import appConfig from './config/app.config';
 
 @Module({
   imports: [
+    // ConfigModule.forRoot({
+    //   // load: [appConfig],
+    //   // validationSchema: Joi.object({
+    //   //   DATABASE_HOST: Joi.when('DATABASE_URL', {
+    //   //     is: undefined,
+    //   //     otherwise: Joi.required(),
+    //   //   }),
+    //   //   DATABASE_PORT: Joi.number().default(5432),
+    //   // }),
+    // }),
     ConfigModule.forRoot({
       load: [appConfig],
-      validationSchema: Joi.object({
-        DATABASE_HOST: Joi.when('DATABASE_URL', {
-          is: undefined,
-          otherwise: Joi.required(),
-        }),
-        DATABASE_PORT: Joi.number().default(5432),
-      }),
     }),
     CoffeesModule,
     // secure in future
