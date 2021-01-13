@@ -36,7 +36,7 @@ export class CoffeesController {
     console.log(id);
     // only int ?? example
     // return `This action returns #${id} coffee`;
-    return this.coffeeService.findOne('' + id); // id.toString()
+    return this.coffeeService.findOne(String(id)); // "" + id;
   }
 
   @Post()
