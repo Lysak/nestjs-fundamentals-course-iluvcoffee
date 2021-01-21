@@ -46,8 +46,7 @@ describe('CoffeesService', () => {
         const coffeeId = '1';
         const expectedCoffee = {};
 
-        coffeeRepository.findOne.mockRejectedValue(expectedCoffee);
-
+        coffeeRepository.findOne.mockReturnValue(expectedCoffee);
         const coffee = await service.findOne(coffeeId);
         expect(coffee).toEqual(expectedCoffee);
       });
@@ -56,12 +55,12 @@ describe('CoffeesService', () => {
     describe('otherwise', () => {
       it('should throw the "NotFoundException"', async () => {
         const coffeeId = '1';
-        coffeeRepository.findOne.mockRejectedValue(undefined);
+        coffeeRepository.findOne.mockReturnValue(undefined);
 
         try {
           await service.findOne(coffeeId);
         } catch (err) {
-          expect(err.toBeInstanceOf(NotFoundException));
+          expect(err).toBeInstanceOf(NotFoundException);
           expect(err.message).toEqual(`Coffee #${coffeeId} not found`);
         }
       });
