@@ -35,7 +35,7 @@ yarn-error.log
 /example
 
 # Tests
-/test
+#/test
 /benchmarks/memory
 /coverage
 /.nyc_output
