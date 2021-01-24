@@ -31,18 +31,18 @@ describe('[Feature Coffees - /coffees]', () => {
       ],
     }).compile();
 
+    app = moduleFixture.createNestApplication();
     app.useGlobalPipes(
       new ValidationPipe({
         whitelist: true,
-        transform: true,
         forbidNonWhitelisted: true,
+        transform: true,
         transformOptions: {
           enableImplicitConversion: true,
         },
       }),
     );
 
-    app = moduleFixture.createNestApplication();
     await app.init();
   });
 
@@ -54,9 +54,10 @@ describe('[Feature Coffees - /coffees]', () => {
   //     .expect('Hello World!');
   // });
 
+  // can use todo to track tests that need to be implemented
   it('Create [POST /]', () => {
     return request(app.getHttpServer())
-      .post('/coffee')
+      .post('/coffees')
       .send(coffee as CreateCoffeeDto)
       .expect(HttpStatus.CREATED)
       .then(({ body }) => {
@@ -66,9 +67,11 @@ describe('[Feature Coffees - /coffees]', () => {
             coffee.flavors.map(name => jasmine.objectContaining({ name })),
           ),
         });
+
         expect(body).toEqual(expectedCoffee);
       });
   });
+
   it.todo('Get all [GET /]');
   it.todo('Get one [GET /:id]');
   it.todo('Update one [PATCH /:id]');
