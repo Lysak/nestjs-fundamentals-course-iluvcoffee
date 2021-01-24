@@ -5,9 +5,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CreateCoffeeDto } from 'src/coffees/dto/create-coffee.dto';
 import * as request from 'supertest';
 
-describe('[Feature Coffees - /coffees]', () => {
+// sudo npm run test:e2e -- coffee.e2e-spec
+
+describe('[Feature] Coffees - /coffees', () => {
   const coffee = {
-    name: 'Shipwreck Roast',
+    title: 'Shipwreck Roast',
     brand: 'Buddy Brew',
     flavors: ['chocolate', 'vanilla'],
   };
@@ -26,7 +28,7 @@ describe('[Feature Coffees - /coffees]', () => {
           password: 'pass123', // user password
           database: 'postgres', // name of our database,
           autoLoadEntities: true, // models will be loaded automatically (you don't have to explicitly specify the entities: [] array)
-          synchronize: false, // your entities will be synced with the database (ORM will map entity definitions to corresponding SQL tabled), every time you run the application (recommended: disable in the production)
+          synchronize: true, // your entities will be synced with the database (ORM will map entity definitions to corresponding SQL tabled), every time you run the application (recommended: disable in the production)
         }),
       ],
     }).compile();
@@ -45,14 +47,6 @@ describe('[Feature Coffees - /coffees]', () => {
 
     await app.init();
   });
-
-  // it('/ (GET)', () => {
-  //   return request(app.getHttpServer())
-  //     .get('/')
-  //     .set('Authorization', process.env.API_KEY)
-  //     .expect(200)
-  //     .expect('Hello World!');
-  // });
 
   // can use todo to track tests that need to be implemented
   it('Create [POST /]', () => {
