@@ -66,7 +66,30 @@ describe('[Feature] Coffees - /coffees', () => {
       });
   });
 
-  it.todo('Get all [GET /]');
+  it('Get all [GET /]', () => {
+    return request(app.getHttpServer())
+      .get('/coffees')
+      .send(coffee as CreateCoffeeDto)
+      .expect(HttpStatus.OK);
+  });
+
+  // it('Get one [GET /:id]', () => {
+  //   return request(app.getHttpServer())
+  //     .get('/coffees/1')
+  //     .expect(HttpStatus.OK)
+  //     .then(({ body }) => {
+  //       const expectedCoffee = jasmine.objectContaining({
+  //         ...coffee,
+  //         flavors: jasmine.arrayContaining(
+  //           coffee.flavors.map(name => jasmine.objectContaining({ name })),
+  //         ),
+  //       });
+  //
+  //       expect(body).toEqual(expectedCoffee);
+  //     });
+  // });
+
+  // it.todo('Get all [GET /]');
   it.todo('Get one [GET /:id]');
   it.todo('Update one [PATCH /:id]');
   it.todo('Delete one [DELETE /:id]');
