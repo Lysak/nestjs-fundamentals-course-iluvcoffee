@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - "27018:27018"
+    environment:
+      MONGO_DATABASE: nest-course
