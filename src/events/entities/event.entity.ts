@@ -1,17 +1,18 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+// in a production application, events should have its own module instead
 
-@Index(['name', 'type'])
-@Entity()
-export class Event {
-  @PrimaryGeneratedColumn()
-  id: number;
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document, SchemaTypes } from 'mongoose';
 
-  @Column()
+@Schema()
+export class Event extends Document {
+  @Prop()
   type: string;
 
-  @Column()
+  @Prop()
   name: string;
 
-  @Column('json')
-  payload: Record<string, any>;
+  @Prop(SchemaTypes.Mixed)
+  payload: Record<string, any>
 }
+
+export const EventSchema = SchemaFactory.createForClass(Event);
